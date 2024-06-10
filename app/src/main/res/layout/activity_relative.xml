@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RelativeActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlTopLeft"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="#ff1397"/>
+
+    <RelativeLayout
+        android:id="@+id/rlTopRight"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentEnd="true"
+        android:background="#ff1397"/>
+
+    <RelativeLayout
+        android:id="@+id/rlCenter"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/rlTopLeft"
+        android:background="#5d4e58">
+        <RelativeLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:background="#ff1397"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlBottomLeft"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/rlCenter"
+        android:background="#ff1397"/>
+
+    <RelativeLayout
+        android:id="@+id/rlBottomRight"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/rlCenter"
+        android:background="#ff1397"/>
+
+    <RelativeLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/rlCenter"
+        android:layout_toEndOf="@id/rlBottomLeft"
+        android:background="#5d4e58"/>
+
+    <RelativeLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/rlCenter"
+        android:layout_toStartOf="@id/rlBottomRight"
+        android:background="#5d4e58"/>
+
+</RelativeLayout>

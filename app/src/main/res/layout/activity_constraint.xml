@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConstraintActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlTopLeft"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="#ff1397"/>
+
+    <RelativeLayout
+        android:id="@+id/rlTopRight"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#ff1397"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rlCenter"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/rlTopLeft"
+        android:background="#5d4e58">
+        <RelativeLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="#ff1397"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlBottomLeft"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/rlCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="#ff1397"/>
+
+    <RelativeLayout
+        android:id="@+id/rlBottomRight"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/rlCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#ff1397"/>
+
+    <RelativeLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/rlCenter"
+        app:layout_constraintStart_toEndOf="@id/rlBottomLeft"
+        android:background="#5d4e58"/>
+
+    <RelativeLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/rlCenter"
+        app:layout_constraintEnd_toStartOf="@id/rlBottomRight"
+        android:background="#5d4e58"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
