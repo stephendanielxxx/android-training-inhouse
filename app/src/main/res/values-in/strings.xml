@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Android 888</string>
+    <string name="hello_world">Halo Dunia</string>
+    <string name="male">Laki-laki</string>
+    <string name="female">Perempuan</string>
+</resources>
