@@ -10,6 +10,7 @@ import app.training.androidtraininginhouse.R
 import app.training.androidtraininginhouse.databinding.ActivityHomeBinding
 import app.training.androidtraininginhouse.fragment.CountryFragment
 import app.training.androidtraininginhouse.fragment.HomeFragment
+import app.training.androidtraininginhouse.fragment.NewsFragment
 import app.training.androidtraininginhouse.fragment.ProfileFragment
 import app.training.androidtraininginhouse.fragment.SettingFragment
 
@@ -39,6 +40,10 @@ class HomeActivity : AppCompatActivity() {
                 R.id.menu_country -> {
                     showFragment(CountryFragment.
                         newInstance("", ""))
+                    true
+                }
+                R.id.menu_news -> {
+                    showFragment(NewsFragment.newInstance("",""))
                     true
                 }
                 else -> false

@@ -11,5 +11,8 @@
         android:icon="@drawable/ic_setting"/>
     <item android:id="@+id/menu_country"
         android:title="Country"
-        android:icon="@drawable/ic_setting"/>
+        android:icon="@drawable/ic_flag"/>
+    <item android:id="@+id/menu_news"
+        android:title="News"
+        android:icon="@drawable/ic_news"/>
 </menu>
