@@ -8,11 +8,16 @@ import app.training.androidtraininginhouse.databinding.ItemNewsBinding
 import app.training.androidtraininginhouse.retrofit.NewsData
 import com.bumptech.glide.Glide
 
-class NewsAdapter(private val newsList: List<NewsData>): RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
+class NewsAdapter(
+    private val newsList: List<NewsData>,
+    private val callback: NewsCallback
+): RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: ItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
             init {
-
+                binding.root.setOnClickListener {
+                    callback.onNewsClicked(newsList[adapterPosition])
+                }
             }
     }
 
@@ -38,4 +43,9 @@ class NewsAdapter(private val newsList: List<NewsData>): RecyclerView.Adapter<Ne
 
         }
     }
+
+    interface NewsCallback{
+        fun onNewsClicked(newsData: NewsData)
+    }
+
 }

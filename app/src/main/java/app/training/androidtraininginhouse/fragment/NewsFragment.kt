@@ -1,5 +1,6 @@
 package app.training.androidtraininginhouse.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import app.training.androidtraininginhouse.activity.NewsDetailActivity
 import app.training.androidtraininginhouse.adapter.NewsAdapter
 import app.training.androidtraininginhouse.databinding.FragmentNewsBinding
+import app.training.androidtraininginhouse.retrofit.NewsData
 import app.training.androidtraininginhouse.viewmodel.NewsViewModel
 
 // TODO: Rename parameter arguments, choose names that match
@@ -22,7 +25,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [NewsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class NewsFragment : Fragment() {
+class NewsFragment : Fragment(), NewsAdapter.NewsCallback {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -68,7 +71,7 @@ class NewsFragment : Fragment() {
         viewModel.newsLiveData.observe(viewLifecycleOwner){
             Log.i("News Fragment", "News Data $it")
 
-            adapter = NewsAdapter(it)
+            adapter = NewsAdapter(it, this)
             binding.rvNews.adapter = adapter
         }
     }
@@ -91,5 +94,15 @@ class NewsFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onNewsClicked(newsData: NewsData) {
+        val intent = Intent(requireContext(), NewsDetailActivity::class.java)
+        intent.putExtra("title", newsData.title)
+        intent.putExtra("content", newsData.content)
+        intent.putExtra("image", newsData.urlToImage)
+        intent.putExtra("date", newsData.publishedAt)
+        intent.putExtra("author", newsData.author)
+        startActivity(intent)
     }
 }
