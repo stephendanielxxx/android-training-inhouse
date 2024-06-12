@@ -53,9 +53,14 @@ class NewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //vertical list
         binding.rvNews.layoutManager = LinearLayoutManager(requireContext())
 
-        viewModel.getNews("us")
+        //horizontal list
+//        binding.rvNews.layoutManager = LinearLayoutManager(requireContext(),
+//            LinearLayoutManager.HORIZONTAL, false)
+
+        viewModel.getNews("us", "sports")
         setObserver()
     }
 

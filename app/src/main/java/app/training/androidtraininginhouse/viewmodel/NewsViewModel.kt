@@ -17,14 +17,14 @@ class NewsViewModel(): ViewModel() {
     private val newsMutableLiveData = MutableLiveData<List<NewsData>>()
     val newsLiveData = newsMutableLiveData
 
-    fun getNews(country: String){
+    fun getNews(country: String, category: String){
         // initialize news repository
         val newsApiService = NewsRetrofit.newsApiService
         newsRepository = NewsRepository(newsApiService)
 
         // run in coroutines
         viewModelScope.launch {
-            val response = newsRepository.getNews(country)
+            val response = newsRepository.getNews(country, category)
             if(response.isSuccessful){
                 val body = response.body()
                 body?.let {
