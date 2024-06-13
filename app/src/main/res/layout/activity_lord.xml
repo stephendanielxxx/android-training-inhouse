@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    tools:context=".activity.LordActivity">
+
+    <EditText
+        android:id="@+id/etLordName"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:autofillHints="Name"
+        android:hint="Insert lord name"
+        android:inputType="text"
+        android:textSize="@dimen/font_medium"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etLordStr"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints="Number"
+        android:hint="Insert lord strength"
+        android:inputType="number"
+        android:textSize="@dimen/font_medium"
+        app:layout_constraintTop_toBottomOf="@+id/etLordName" />
+
+    <EditText
+        android:id="@+id/etLordInt"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints="Number"
+        android:hint="Insert lord intelligence"
+        android:inputType="number"
+        android:textSize="@dimen/font_medium"
+        app:layout_constraintTop_toBottomOf="@+id/etLordStr" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:text="Add Data"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/BurlyWood"
+        app:cornerRadius="12dp"
+        app:layout_constraintTop_toBottomOf="@id/etLordInt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
