@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import app.training.androidtraininginhouse.activity.HomeActivity
+import app.training.androidtraininginhouse.local.SharedPreferenceUtil
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,10 +18,18 @@ class MainActivity : AppCompatActivity() {
 //        openLink.data = Uri.parse("https://www.google.com")
 //        startActivity(openLink)
 
-        val intent = Intent(this, HomeActivity::class.java)
-        intent.putExtra("username", "James") // set data untuk dipassing
-        startActivity(intent)
-        finish() // destroy activity
+        val username = SharedPreferenceUtil.getStringData(this, "username")
+        username?.let {
+            if(it.isEmpty()){
+                // show login activity
+                val intent = Intent(this, UiControlActivity::class.java)
+                startActivity(intent)
+            }else{
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                finish() // destroy activity
+            }
+        }
     }
 
     override fun onStart() {

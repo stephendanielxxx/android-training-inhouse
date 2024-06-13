@@ -1,6 +1,7 @@
 package app.training.androidtraininginhouse.retrofit
 
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,6 +17,14 @@ object NewsRetrofit {
 
     private fun getOkHttpClient(): OkHttpClient{
         return OkHttpClient().newBuilder()
+            .addInterceptor {
+                val authorization: Request = it.request().newBuilder().addHeader(
+                    "Authorization",
+                    "Bearer VEVTV1czNTY6a0d2Rm9ZaDdEUGdjSUtqUWVmVDYxZFd6YTlwNHkyQ08="
+                )
+                    .build()
+                it.proceed(authorization)
+            }
             .addInterceptor(getHttpLogging()).build()
     }
 

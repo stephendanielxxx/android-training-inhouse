@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import app.training.androidtraininginhouse.databinding.ActivityUiControlBinding
 import app.training.androidtraininginhouse.fragment.HomeFragment
+import app.training.androidtraininginhouse.local.SharedPreferenceUtil
 import com.google.android.material.snackbar.Snackbar
 
 class UiControlActivity : AppCompatActivity() {
@@ -21,17 +22,22 @@ class UiControlActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener {
             val username = binding.etUsername.text.toString()
-//            Toast.makeText(this, "Username = $username",
-//                Toast.LENGTH_SHORT).show()
-            Snackbar.make(
-                it, "Username = $username",
-                Snackbar.LENGTH_SHORT
-            ).setAction("Retry") {
-                Toast.makeText(
-                    this, "Retry is clicked",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }.show()
+
+            if(username.isEmpty() || username.isBlank()){
+                Toast.makeText(applicationContext, "Username must be filled", Toast.LENGTH_SHORT).show()
+            }else{
+                SharedPreferenceUtil.saveStringData(applicationContext, "username", username)
+
+                Snackbar.make(
+                    it, "Login Success",
+                    Snackbar.LENGTH_SHORT
+                ).setAction("OK") {
+                    Toast.makeText(
+                        this, "Retry is clicked",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }.show()
+            }
         }
 
         binding.ivImage.setImageResource(
