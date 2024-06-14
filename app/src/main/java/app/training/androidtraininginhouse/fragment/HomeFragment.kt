@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import app.training.androidtraininginhouse.R
 import app.training.androidtraininginhouse.activity.LordActivity
+import app.training.androidtraininginhouse.activity.MapsActivity
 import app.training.androidtraininginhouse.databinding.FragmentHomeBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -50,6 +51,12 @@ class HomeFragment : Fragment() {
         binding.ivLord.setOnClickListener {
             val intent = Intent(requireContext(),
                 LordActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnOpenMaps.setOnClickListener {
+            val intent = Intent(requireContext(),
+                MapsActivity::class.java)
             startActivity(intent)
         }
     }

@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.devtools.ksp")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -58,11 +59,14 @@ dependencies {
     implementation(libs.logging.interceptor)
 
     implementation(libs.glide)
+    implementation(libs.firebase.messaging)
     annotationProcessor(libs.compiler)
 
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
+
+    implementation(libs.play.services.maps)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

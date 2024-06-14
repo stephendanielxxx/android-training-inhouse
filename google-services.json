@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "40111870507",
+    "project_id": "androidtraininginhouse",
+    "storage_bucket": "androidtraininginhouse.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40111870507:android:41385d8d90a1a0cdfed06e",
+        "android_client_info": {
+          "package_name": "app.training.androidtraininginhouse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5Ltedm8bTAIkUvmqyYvq2qNMFmriNbus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

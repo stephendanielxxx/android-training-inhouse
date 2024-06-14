@@ -1,6 +1,7 @@
 package app.training.androidtraininginhouse.activity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -13,6 +14,8 @@ import app.training.androidtraininginhouse.fragment.HomeFragment
 import app.training.androidtraininginhouse.fragment.NewsFragment
 import app.training.androidtraininginhouse.fragment.ProfileFragment
 import app.training.androidtraininginhouse.fragment.SettingFragment
+import com.google.firebase.Firebase
+import com.google.firebase.messaging.messaging
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -20,6 +23,14 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.main)
+
+        Firebase.messaging.subscribeToTopic("news").addOnCompleteListener {
+            if(it.isSuccessful){
+                Log.i("FCM", "Subscribe success")
+            }else{
+                Log.e("FCM", "Subscribe failed")
+            }
+        }
 
         showFragment(HomeFragment.newInstance("",""))
 
