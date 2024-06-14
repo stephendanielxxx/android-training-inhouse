@@ -6,7 +6,6 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.media.RingtoneManager
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
@@ -18,7 +17,8 @@ import com.google.firebase.messaging.RemoteMessage
 import kotlin.random.Random
 
 private const val CHANNEL_ID = "NOTIFICATION_CHANNEL"
-class MyFirebaseMessagingService: FirebaseMessagingService() {
+
+class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
         val title = message.notification?.title
@@ -27,23 +27,27 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
         val customBody = message.data["customBody"]
 
         Log.i("FCM", "FCM Data $title $body $customTitle $customBody")
-
+//        showNotification(title!!, body!!)
         showNotification(customTitle!!, customBody!!)
     }
 
-    private fun showNotification(title: String, body: String){
+    private fun showNotification(title: String, body: String) {
         val intent = Intent(this, HomeActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val pendingIntent = PendingIntent.getActivity(this, 0, intent,
-            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE)
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val pendingIntent = PendingIntent.getActivity(
+            this, 0, intent,
+            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
+        )
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+        // khusus android oreo ke atas
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel(notificationManager)
         }
 
         val notificationBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.mipmap.app_logo_round)
+            .setSmallIcon(R.drawable.indonesia)
             .setContentTitle(title)
             .setContentText(body)
             .setAutoCancel(true)
@@ -53,9 +57,12 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun createNotificationChannel(notificationManager: NotificationManager){
+    private fun createNotificationChannel(notificationManager: NotificationManager) {
         val channelName = "NotificationChannel"
-        val channel = NotificationChannel(CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_HIGH).apply {
+        val channel = NotificationChannel(
+            CHANNEL_ID, channelName,
+            NotificationManager.IMPORTANCE_HIGH
+        ).apply {
             description = "Notification"
             enableLights(true)
             lightColor = Color.GREEN
